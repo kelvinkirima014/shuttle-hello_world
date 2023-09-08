@@ -1,4 +1,4 @@
-use axum::{routing::{post}, Router};
+use axum::{routing::{get}, Router};
 
 async fn hello_world() -> &'static str {
     "Hello, world!"
@@ -6,7 +6,7 @@ async fn hello_world() -> &'static str {
 
 #[shuttle_runtime::main]
 async fn axum() -> shuttle_axum::ShuttleAxum {
-    let router = Router::new().route("/", post(hello_world));
+    let router = Router::new().route("/", get(hello_world));
 
     Ok(router.into())
 }
